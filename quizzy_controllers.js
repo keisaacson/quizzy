@@ -1,9 +1,8 @@
 var ApplicationController = {
-	questionViews: [],
-	questionModels: [],
-	totalQuestions: undefined,
-	score: 0,
 	startQuiz: function() {
+		this.questionViews = [];
+		this.questionModels = [];
+		this.score = 0;
 		var questionsData = quizData.questions;
 		for (var i = 0; i < questionsData.length; i++) {
 			var questionModel = new Question(questionsData[i]);
@@ -21,6 +20,11 @@ var ApplicationController = {
 	hideQuestions: function() {
 		for (var i = 0; i < this.questionViews.length; i++) {
 			this.questionViews[i].hide();
+		};
+	},
+	removeQuestions: function() {
+		for (var i = 0; i < this.questionViews.length; i++) {
+			this.questionViews[i].remove();
 		};
 	},
 	scoreAnswer: function(userAnswer) {
@@ -47,5 +51,5 @@ var ApplicationController = {
 			};
 		};
 		var resultView = new ResultView(animal, description, image);
-	}
+	},
 }

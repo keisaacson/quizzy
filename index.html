@@ -5,7 +5,6 @@
 	<link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-	<button id="start-quiz-button">Start the Quiz!</button>
 	<div id="quiz-container">
 
 	</div>
@@ -13,14 +12,19 @@
 	<script type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
 	<script type="text/javascript" src="quizzy_data.js"></script>
 	<script type="text/javascript" src="quizzy_models.js"></script>
+	<script type="text/javascript" src="quizzy_main_view.js"></script>
 	<script type="text/javascript" src="quizzy_question_view.js"></script>
+	<script type="text/javascript" src="quizzy_new_quiz_view.js"></script>
+	<script type="text/javascript" src="quizzy_new_question_view.js"></script>
+	<script type="text/javascript" src="quizzy_show_question_view.js"></script>
+	<script type="text/javascript" src="quizzy_correct_answer_view.js"></script>
 	<script type="text/javascript" src="quizzy_results_view.js"></script>
 	<script type="text/javascript" src="quizzy_controllers.js"></script>
+	<script type="text/javascript" src="quizzy_new_quiz_controller.js"></script>
 	<script>
-		$('#start-quiz-button').on('click', function() {
-			ApplicationController.startQuiz();
-			$('#start-quiz-button').hide();
-		});
+		$(document).on('ready', function(){
+			NewQuizzesController.viewQuizzes();
+		})
 	</script>
 </body>
 </html>

@@ -5,6 +5,7 @@ function QuestionView(questionModel) {
 			'<% for (var i = 0; i < choices.length; i++) { %>',
 				'<input name="<%= id %>" type="radio" value="<%= choices[i] %>">',
 				'<label><%= choices[i] %></label>',
+				'</br>',
 			'<% } %>',
 			'<button class="next-question-button" type="button">Next Question</button>',
 		'</div>'	
@@ -15,14 +16,13 @@ function QuestionView(questionModel) {
 		id: questionModel.id,
 		scores: questionModel.scores
 	});
-	var me = this;
 	var $view = $(compiledHTML);
 	$('#quiz-container').append($view);
 	$view.find('.next-question-button').on('click', function(){
 		if (!localStorage.responses) {
 			var responses = {};
 		} else {
-			var responses = JSON.parse(localStorage['responses']);
+			var responses = JSON.parse(localStorage.responses);
 		};
 		if (!responses[questionModel.id]) {
 			responses[questionModel.id] = {};
@@ -43,4 +43,7 @@ function QuestionView(questionModel) {
 	this.hide = function() {
 		$view.hide();
 	};
+	this.remove = function() {
+		$view.remove();
+	}
 };
