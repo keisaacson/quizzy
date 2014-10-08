@@ -50,7 +50,6 @@ function NewQuestionView(quizTitle) {
 		quizzes[quizTitle]['questions'].push(question);
 		var questionIndex = quizzes[quizTitle]['questions'].indexOf(question)
 		localStorage.setItem('quizzes', JSON.stringify(quizzes));
-		console.log(localStorage.quizzes);
 		$view.find('.add-question').remove();
 		NewQuizzesController.setCorrectAnswer(quizTitle, questionIndex, answers);
 	});

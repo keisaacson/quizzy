@@ -39,6 +39,7 @@ function MainView() {
 			$view.find('.main-view').remove();
 			ApplicationController.startQuiz();
 		} else {
+			$view.find('.main-view').remove();
 			NewQuizzesController.playQuiz(quizChoice);
 		};
 	})

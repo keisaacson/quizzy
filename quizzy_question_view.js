@@ -33,17 +33,14 @@ function QuestionView(questionModel) {
 		} else{
 			responses[questionModel.id][selectedChoice]++;
 		};
-		localStorage.setItem('responses', JSON.stringify(responses))
+		localStorage.setItem('responses', JSON.stringify(responses));
 		ApplicationController.scoreAnswer(selectedChoice);
 		ApplicationController.nextQuestion();
-	})
+	});
 	this.show = function() {
 		$view.show();
 	};
 	this.hide = function() {
 		$view.hide();
-	};
-	this.remove = function() {
-		$view.remove();
 	}
 };

@@ -22,11 +22,6 @@ var ApplicationController = {
 			this.questionViews[i].hide();
 		};
 	},
-	removeQuestions: function() {
-		for (var i = 0; i < this.questionViews.length; i++) {
-			this.questionViews[i].remove();
-		};
-	},
 	scoreAnswer: function(userAnswer) {
 		var currentQuestion = this.questionModels[this.currentQuestionIndex];
 		var scoreIndex = currentQuestion.choices.indexOf(userAnswer);

@@ -28,6 +28,7 @@ function CorrectAnswerView(quizTitle, questionIndex, answers) {
 	$view.find('.set-correct-answer-button').on('click', function(){
 		var correctAnswer = $view.find('option:selected').val();
 		quizzes[quizTitle]['questions'][questionIndex]['answer'] = correctAnswer;
+		localStorage.setItem('quizzes', JSON.stringify(quizzes));
 		$view.find('.set-correct-answer-button').attr('disabled', true);
 		$view.find('.new-question-button').attr('disabled', false);
 		$view.find('.save-quiz-button').attr('disabled', false);

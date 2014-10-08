@@ -1,9 +1,9 @@
-function ShowQuestionView(questionModel) {
+function ShowQuestionView(questionModel, quizTitle) {
 	var myTemplate = _.template([
 		'<div>',
 			'<h2><%= question %></h2>',
 			'<% for (var i = 0; i < choices.length; i++) { %>',
-				'<input name="<%= id %>" type="radio" value="<%= choices[i] %>">',
+				'<input name="<%= question %>" type="radio" value="<%= choices[i] %>">',
 				'<label><%= choices[i] %></label>',
 				'</br>',
 			'<% } %>',
@@ -13,6 +13,38 @@ function ShowQuestionView(questionModel) {
 	var compiledHTML = myTemplate({
 		question: questionModel.question,
 		choices: questionModel.choices,
-		answer: questionModel.answer
 	});
+	var $view = $(compiledHTML);
+	$('#quiz-container').append($view);
+	$view.find('.next-question-button').on('click', function(){
+		if (!localStorage.quizresponses) {
+			var responses = {};
+		} else {
+			var responses = JSON.parse(localStorage.quizresponses);
+		};
+		if (!responses[quizTitle]) {
+			responses[quizTitle] = {};
+		};
+		if (!responses[quizTitle][questionModel.question]) {
+			responses[quizTitle][questionModel.question] = {};
+			responses[quizTitle][questionModel.question]['total'] = 0;
+		};
+		var selectedChoice = $('input[name="' + questionModel.question + '"]:checked').val();
+		if (!responses[quizTitle][questionModel.question][selectedChoice]) {
+			responses[quizTitle][questionModel.question][selectedChoice] = 1;
+			responses[quizTitle][questionModel.question]['total']++;
+		} else {
+			responses[quizTitle][questionModel.question][selectedChoice]++;
+			responses[quizTitle][questionModel.question]['total']++;
+		};
+		localStorage.setItem('quizresponses', JSON.stringify(responses));
+		NewQuizzesController.scoreAnswer(selectedChoice);
+		NewQuizzesController.nextQuestion(quizTitle);
+	});
+	this.show = function() {
+		$view.show();
+	};
+	this.hide = function() {
+		$view.hide();
+	};
 }
