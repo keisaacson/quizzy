@@ -36,7 +36,7 @@ function ResultView(animal, description, image) {
 		};
 		var player = $('input[name="save_result"]').val();
 		results[player] = animal;
-		localStorage.setItem('results', JSON.stringify(results))
+		localStorage.setItem('results', JSON.stringify(results));
 		$submit.remove();
 		var secondCompiledHTML = mySecondTemplate({
 			results: JSON.parse(localStorage['results']),
