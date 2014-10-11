@@ -15,15 +15,13 @@ function MainView() {
 				'<% } %>',
 				'</br>',
 				'<button class="select-quiz-button" type="button">Quiz Me!</button>',
+				'<button class="edit-quiz-button" type="button">Edit Quiz</button>',
+				'<button class="delete-quiz-button" type="button">Delete Quiz</button>',
 				'<button class="make-new-quiz-button" type="button">Make a New Quiz</button>',
 			'</div>',
 		'</div>'
 	].join(''));
-	if (localStorage.quizzes) {
-		var quizzes = JSON.parse(localStorage.quizzes);
-	} else {
-		var quizzes = {};
-	}
+	var quizzes = Repo.getRepo('quizzes');
 	var compiledHTML = myTemplate({
 		quizzes: quizzes
 	});
@@ -42,5 +40,13 @@ function MainView() {
 			$view.find('.main-view').remove();
 			NewQuizzesController.playQuiz(quizChoice);
 		};
-	})
+	});
+	$view.find('.delete-quiz-button').on('click', function(){
+		var quizChoice = $view.find('input:checked').val();
+		if (confirm('Are you sure you want to delete the "' + quizChoice + '" quiz?')) {
+			Repo.deleteQuiz(quizChoice);
+			$view.find('.main-view').remove();
+			NewQuizzesController.viewQuizzes();
+		};
+	});
 }

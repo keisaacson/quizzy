@@ -13,15 +13,10 @@ function NewQuizView() {
 	var $view = $(compiledHTML);
 	$('#quiz-container').append($view);
 	$view.find('.new-question-button').on('click', function(){
-		if (!localStorage.quizzes) {
-			var quizzes = {};
-		} else {
-			var quizzes = JSON.parse(localStorage.quizzes);
-		};
+		var quizzes = Repo.getRepo('quizzes');
 		quizTitle = $('input[name="quiz-title"]').val();
 		if (!quizzes[quizTitle]) {
-			quizzes[quizTitle] = {};
-			localStorage.setItem('quizzes', JSON.stringify(quizzes));
+			Repo.createNewQuiz(quizTitle);
 			$view.remove();
 			NewQuizzesController.addQuestion(quizTitle);
 		} else {

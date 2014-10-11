@@ -17,11 +17,7 @@ function ShowQuestionView(questionModel, quizTitle) {
 	var $view = $(compiledHTML);
 	$('#quiz-container').append($view);
 	$view.find('.next-question-button').on('click', function(){
-		if (!localStorage.quizresponses) {
-			var responses = {};
-		} else {
-			var responses = JSON.parse(localStorage.quizresponses);
-		};
+		var responses = Repo.getRepo('quizresponses');
 		if (!responses[quizTitle]) {
 			responses[quizTitle] = {};
 		};

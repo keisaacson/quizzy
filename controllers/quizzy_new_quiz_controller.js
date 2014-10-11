@@ -8,9 +8,6 @@ var NewQuizzesController = {
 	addQuestion: function(quizTitle) {
 		var newQuestionView = new NewQuestionView(quizTitle);
 	},
-	setCorrectAnswer: function(quizTitle, questionIndex, answers) {
-		var correctAnswerView = new CorrectAnswerView(quizTitle, questionIndex, answers);
-	},
 	playQuiz: function(quizTitle) {
 		this.questionViews = [];
 		this.questionModels = [];
