@@ -29,18 +29,12 @@ function ResultView(animal, description, image) {
 		'<% } %>'
 	].join(''));
 	$('.save_result').on('click', function() {
-		if (!localStorage.results) {
-			var results = {};
-		} else {
-			var results = JSON.parse(localStorage['results']);
-		};
-		var player = $('input[name="save_result"]').val();
-		results[player] = animal;
-		localStorage.setItem('results', JSON.stringify(results));
+		var name = $('input[name="save_result"]').val();
+		Repo.saveSpiritAnimalResult(name, animal);
 		$submit.remove();
 		var secondCompiledHTML = mySecondTemplate({
-			results: JSON.parse(localStorage['results']),
-			responses: JSON.parse(localStorage['responses'])
+			results: Repo.getRepo('results'),
+			responses: Repo.getRepo('responses')
 		});
 		$results = $(secondCompiledHTML);
 		$('#quiz-container').append($results);

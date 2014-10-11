@@ -5,11 +5,18 @@ var Repo = {
 	},
 	createNewQuiz: function(quizTitle) {
 		var quizzes = JSON.parse(localStorage.quizzes);
+		var quizresponses = JSON.parse(localStorage.quizresponses);
+		var quizresults = JSON.parse(localStorage.quizresults);
 		quizzes[quizTitle] = {};
+		quizresponses[quizTitle] = {};
+		quizresults[quizTitle] = {};
 		quizzes[quizTitle]['questions'] = [];
 		localStorage.setItem('quizzes', JSON.stringify(quizzes));
+		localStorage.setItem('quizresponses', JSON.stringify(quizresponses));
+		localStorage.setItem('quizresults', JSON.stringify(quizresults));
+
 	},
-	createNewQuestion: function(quizTitle, question, answers) {
+	createNewQuestion: function(quizTitle, question, answers, correctAnswer) {
 		var quizzes = JSON.parse(localStorage.quizzes);
 		var newQuestion = {};
 		newQuestion['question'] = question;
@@ -17,7 +24,8 @@ var Repo = {
 		quizzes[quizTitle]['questions'].push(newQuestion);
 		localStorage.setItem('quizzes', JSON.stringify(quizzes));
 		var questionIndex = quizzes[quizTitle]['questions'].indexOf(newQuestion);
-		return questionIndex;
+		quizzes[quizTitle]['questions'][questionIndex]['answer'] = correctAnswer;
+		localStorage.setItem('quizzes', JSON.stringify(quizzes));
 	},
 	getRepo: function(repoName) {
 		if (!localStorage[repoName]) {
@@ -38,6 +46,43 @@ var Repo = {
 		var question = quiz['questions'][questionIndex]['question'];
 		return question;
 	},
+	saveQuizResponse: function(quizTitle, questionModel, selectedChoice) {
+		var responses = Repo.getRepo('quizresponses');
+		if (!responses[quizTitle][questionModel.question]) {
+			responses[quizTitle][questionModel.question] = {};
+			responses[quizTitle][questionModel.question]['total'] = 0;
+		};
+		if (!responses[quizTitle][questionModel.question][selectedChoice]) {
+			responses[quizTitle][questionModel.question][selectedChoice] = 1;
+			responses[quizTitle][questionModel.question]['total']++;
+		} else {
+			responses[quizTitle][questionModel.question][selectedChoice]++;
+			responses[quizTitle][questionModel.question]['total']++;
+		};
+		localStorage.setItem('quizresponses', JSON.stringify(responses));
+	},
+	saveSpiritAnimalResponse: function(questionModel, selectedChoice) {
+		var responses = Repo.getRepo('responses');
+		if (!responses[questionModel.id]) {
+			responses[questionModel.id] = {};
+		};
+		if (!responses[questionModel.id][selectedChoice]) {
+			responses[questionModel.id][selectedChoice] = 1;
+		} else{
+			responses[questionModel.id][selectedChoice]++;
+		};
+		localStorage.setItem('responses', JSON.stringify(responses));
+	},
+	saveQuizResult: function(quizTitle, name, score) {
+		var results = Repo.getRepo('quizresults');
+		results[quizTitle][name] = score;
+		localStorage.setItem('quizresults', JSON.stringify(results));
+	},
+	saveSpiritAnimalResult: function(name, animal) {
+		var results = Repo.getRepo('results');
+		results[name] = animal;
+		localStorage.setItem('results', JSON.stringify(results));
+	},
 	deleteQuiz: function(quizTitle) {
 		var quizzes = JSON.parse(localStorage.quizzes);
 		var quizResponses = JSON.parse(localStorage.quizresponses);
@@ -48,11 +93,6 @@ var Repo = {
 		localStorage.setItem('quizzes', JSON.stringify(quizzes));
 		localStorage.setItem('quizresponses', JSON.stringify(quizResponses));
 		localStorage.setItem('quizresults', JSON.stringify(quizResults));
-	},
-	setCorrectAnswer: function(quizTitle, questionIndex, correctAnswer) {
-		var quizzes = JSON.parse(localStorage.quizzes);
-		quizzes[quizTitle]['questions'][questionIndex]['answer'] = correctAnswer;
-		localStorage.setItem('quizzes', JSON.stringify(quizzes));
 	}
 }
 

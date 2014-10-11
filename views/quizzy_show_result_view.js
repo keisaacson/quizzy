@@ -19,12 +19,13 @@ function ShowResultView(quizTitle, correctAnswers, totalQuestions, missedQuestio
 			'</ul>',
 		'<% }; %>'
 	].join(''));
-	var quizResponses = JSON.parse(localStorage.quizresponses)[quizTitle];
-	var quiz = JSON.parse(localStorage.quizzes)[quizTitle]['questions'];
+	var quizResponses = Repo.getRepo('quizresponses')[quizTitle];
+	var quiz = Repo.getQuiz(quizTitle)['questions'];
+	var score = correctAnswers/totalQuestions * 100;
 	var compiledHTML = myTemplate({
 		correct: correctAnswers,
 		total: totalQuestions,
-		percent: correctAnswers/totalQuestions * 100, 
+		percent: score, 
 		missedQuestions: missedQuestions
 	});
 	$view = $(compiledHTML);
@@ -59,23 +60,14 @@ function ShowResultView(quizTitle, correctAnswers, totalQuestions, missedQuestio
 		'</div>'
 	].join(''));
 	$('.save-result-button').on('click', function(){
-		if (!localStorage.quizresults) {
-			var results = {};
-		} else {
-			var results = JSON.parse(localStorage['quizresults']);
-		};
-		if (!results[quizTitle]) {
-			results[quizTitle] = {};
-		};
-		var player = $('input[name="save_result"]').val();
-		results[quizTitle][player] = correctAnswers/totalQuestions * 100;
-		localStorage.setItem('quizresults', JSON.stringify(results));
+		var name = $('input[name="save_result"]').val();
+		Repo.saveQuizResult(quizTitle, name, score)
 		$('.save-name').hide();
 		$('.main-view-button').show();
 		var otherCompiledHTML = myOtherTemplate({
 			results: quizResponses,
 			quiz: quiz,
-			quizresults: JSON.parse(localStorage['quizresults']),
+			quizresults: Repo.getRepo('quizresults'),
 			quiztitle: quizTitle
 		});
 		$results = $(otherCompiledHTML);

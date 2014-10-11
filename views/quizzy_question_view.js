@@ -19,21 +19,8 @@ function QuestionView(questionModel) {
 	var $view = $(compiledHTML);
 	$('#quiz-container').append($view);
 	$view.find('.next-question-button').on('click', function(){
-		if (!localStorage.responses) {
-			var responses = {};
-		} else {
-			var responses = JSON.parse(localStorage.responses);
-		};
-		if (!responses[questionModel.id]) {
-			responses[questionModel.id] = {};
-		};
 		var selectedChoice = $('input[name=' + questionModel.id + ']:checked').val();
-		if (!responses[questionModel.id][selectedChoice]) {
-			responses[questionModel.id][selectedChoice] = 1;
-		} else{
-			responses[questionModel.id][selectedChoice]++;
-		};
-		localStorage.setItem('responses', JSON.stringify(responses));
+		Repo.saveSpiritAnimalResponse(questionModel, selectedChoice);
 		ApplicationController.scoreAnswer(selectedChoice);
 		ApplicationController.nextQuestion();
 	});

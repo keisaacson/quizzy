@@ -70,8 +70,7 @@ function NewQuestionView(quizTitle) {
 		$('#quiz-container').append($setAnswer);
 		$setAnswer.find('.set-correct-answer-button').on('click', function(){
 			var correctAnswer = $setAnswer.find('option:selected').val();
-			var questionIndex = Repo.createNewQuestion(quizTitle, question, answers);
-			Repo.setCorrectAnswer(quizTitle, questionIndex, correctAnswer);
+			Repo.createNewQuestion(quizTitle, question, answers, correctAnswer);
 			$setAnswer.find('.set-correct-answer-button').attr('disabled', true);
 			$setAnswer.find('.new-question-button').attr('disabled', false);
 			$setAnswer.find('.save-quiz-button').attr('disabled', false);
