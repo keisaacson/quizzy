@@ -12,7 +12,6 @@ function editQuizView(quizTitle) {
 									'<li> <%= quizQuestions[index]["choices"][i] %> </li>',
 								'<% } %>',
 							'</ul>',
-							'</br>',
 							'<button class="delete-question-button <%=index%>" value="<%=index%>" type="button">Delete Question</button>',
 							'</br>',
 						'<% } %>',

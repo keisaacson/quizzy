@@ -13,7 +13,6 @@ function MainView() {
 					'<label><%= quizTitle %></label>',
 					'</br>',
 				'<% } %>',
-				'</br>',
 				'<button class="select-quiz-button" type="button">Quiz Me!</button>',
 				'<button class="edit-quiz-button" type="button">Edit Quiz</button>',
 				'<button class="delete-quiz-button" type="button">Delete Quiz</button>',

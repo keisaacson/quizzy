@@ -1,6 +1,6 @@
 function ResultView(animal, description, image) {
 	var myTemplate = _.template([
-		'<h1>Your spirit animal is a <%=animal%>. You are both <%=description%>!</h1>',
+		'<h2>Your spirit animal is a <%=animal%>. You are both <%=description%>!</h2>',
 		'<img src="<%=image%>" alt=<%= animal %> height="300px"/>',
 		'</br>'
 	].join(''));
@@ -16,16 +16,20 @@ function ResultView(animal, description, image) {
 	var $results;
 
 	var mySecondTemplate = _.template([
-		'<h2>Spirit Animal Results</h2>',
+		'<h3>Spirit Animal Results</h3>',
+		'<ul>',
 		'<% for (var name in results){ %>',
-			'<h3> <%=name%>: <%=results[name]%></h3>',
+			'<li> <%=name%>: <%=results[name]%></li>',
 		'<% } %>',
-		'<h2>Question by Question Responses</h2>',
+		'</ul>',
+		'<h3>Question by Question Responses</h3>',
 		'<% for (var question in responses){ %>',
-			'<h3> Question <%=parseInt(question) + 1%>:</h3>',
+			'<h4> Question <%=parseInt(question) + 1%>:</h4>',
+			'<ul>',
 			'<% for (var answer in responses[question]){ %>',
-				'<h5> <%=answer%>: <%= responses[question][answer] %> </h5>',
+				'<li> <%=answer%>: <%= responses[question][answer] %> </li>',
 			'<% } %>',
+			'</ul>',
 		'<% } %>'
 	].join(''));
 	$('.save_result').on('click', function() {
