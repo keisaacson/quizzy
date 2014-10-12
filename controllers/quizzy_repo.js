@@ -93,6 +93,14 @@ var Repo = {
 		localStorage.setItem('quizzes', JSON.stringify(quizzes));
 		localStorage.setItem('quizresponses', JSON.stringify(quizResponses));
 		localStorage.setItem('quizresults', JSON.stringify(quizResults));
+	},
+	deleteQuestion: function(quizTitle, questionIndex, question) {
+		var quizzes = JSON.parse(localStorage.quizzes);
+		var quizResponses = JSON.parse(localStorage.quizresponses);
+		delete quizzes[quizTitle]['questions'][questionIndex];
+		delete quizResponses[quizTitle][question];
+		localStorage.setItem('quizzes', JSON.stringify(quizzes));
+		localStorage.setItem('quizresponses', JSON.stringify(quizResponses));
 	}
 }
 

@@ -27,10 +27,6 @@ function MainView() {
 	});
 	var $view = $(compiledHTML);
 	$('#quiz-container').append($view);
-	$view.find('.make-new-quiz-button').on('click', function(){
-		$view.find('.main-view').remove();
-		NewQuizzesController.createQuiz();
-	});
 	$view.find('.select-quiz-button').on('click', function(){
 		var quizChoice = $view.find('input:checked').val();
 		if (quizChoice == 'spirit-animal') {
@@ -41,12 +37,27 @@ function MainView() {
 			NewQuizzesController.playQuiz(quizChoice);
 		};
 	});
+	$view.find('.edit-quiz-button').on('click', function(){
+		var quizChoice = $view.find('input:checked').val();
+		if (quizChoice == 'spirit-animal') {
+			alert('This quiz cannot be edited.');
+		} else {
+			$view.find('.main-view').remove();
+			NewQuizzesController.editQuiz(quizChoice);
+		};
+	});
 	$view.find('.delete-quiz-button').on('click', function(){
 		var quizChoice = $view.find('input:checked').val();
-		if (confirm('Are you sure you want to delete the "' + quizChoice + '" quiz?')) {
+		if (quizChoice == 'spirit-animal') {
+			alert('This quiz cannot be deleted.');
+		} else if (confirm('Are you sure you want to delete the "' + quizChoice + '" quiz?')) {
 			Repo.deleteQuiz(quizChoice);
 			$view.find('.main-view').remove();
 			NewQuizzesController.viewQuizzes();
 		};
+	});
+	$view.find('.make-new-quiz-button').on('click', function(){
+		$view.find('.main-view').remove();
+		NewQuizzesController.createQuiz();
 	});
 }

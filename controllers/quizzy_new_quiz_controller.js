@@ -17,11 +17,14 @@ var NewQuizzesController = {
 		var questionsData = quizzes[quizTitle]['questions'];
 		this.totalQuestions = questionsData.length;
 		for (var i = 0; i < this.totalQuestions; i++) {
-			var questionModel = new NewQuestion(questionsData[i]);
-			var questionView = new ShowQuestionView(questionModel, quizTitle);
-			this.questionModels.push(questionModel);
-			this.questionViews.push(questionView);
+			if (questionsData[i]) {
+				var questionModel = new NewQuestion(questionsData[i]);
+				var questionView = new ShowQuestionView(questionModel, quizTitle);
+				this.questionModels.push(questionModel);
+				this.questionViews.push(questionView);
+			};
 		};
+		this.totalQuestions = this.questionViews.length;
 		this.currentQuestionIndex = 0;
 		this.showQuestion(this.currentQuestionIndex);
 	},
@@ -54,5 +57,8 @@ var NewQuizzesController = {
 	showResults: function(quizTitle) {
 		this.hideQuestions();
 		var resultView = new ShowResultView(quizTitle, this.correctAnswers, this.totalQuestions, this.missedQuestions);
+	},
+	editQuiz: function(quizTitle) {
+		var editView = new editQuizView(quizTitle);
 	}
 }
