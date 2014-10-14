@@ -34,7 +34,6 @@ function editQuizView(quizTitle) {
 		if (confirm('Are you sure you want to delete this question? All saved statistics for this question will also be deleted.')) {
 			var $me = $(e.target);
 			var questionIndex = $me.val();
-			console.log(questionIndex);
 			var question = Repo.getQuestion(quizTitle, questionIndex);
 			Repo.deleteQuestion(quizTitle, questionIndex, question);
 			$view.find('.edit-quiz').remove();
