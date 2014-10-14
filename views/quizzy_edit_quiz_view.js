@@ -2,7 +2,7 @@ function editQuizView(quizTitle) {
 	var myTemplate = _.template([
 		'<div>',
 			'<div class="edit-quiz">',
-				'<h2>Edit the "<%= quizTitle%>"" quiz:</h2>',
+				'<h2>Edit the "<%= quizTitle%>" quiz:</h2>',
 				'<ul>',
 					'<% for (var index in quizQuestions) { %>',
 						'<% if (quizQuestions[index]) {%>',

@@ -89,7 +89,7 @@ var quizData = {
 			animal: 'playful otter',
 			description: 'friendly and talkative',
 			points_range: [26, 29],
-			image: '//raredelights.com/wp-content/uploads/2013/10/Sea-Otter.jpg'
+			image: 'http://raredelights.com/wp-content/uploads/2013/10/Sea-Otter.jpg'
 		},
 		{
 			id: 4,

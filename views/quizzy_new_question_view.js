@@ -54,12 +54,20 @@ function NewQuestionView(quizTitle) {
 	$view.find('.save-answers-button').on('click', function(){
 		var quizzes = Repo.getRepo('quizzes');
 		var question = $view.find('.question').val();
+		if (!question) {
+			alert('Please enter a question.');
+			return;
+		};
 		var answers = [];
 		for (var i = 0; i < possibleAnswerCounter; i++) {
 			var answerChoice = $view.find('.' + i + '').val();
 			if (answerChoice !== '') {
 				answers.push(answerChoice);
 			};
+		};
+		if (answers.length === 0) {
+			alert('Please enter at least one answer choice.');
+			return;
 		};
 		$view.find('.add-question').remove();
 		var otherCompiledHTML = myOtherTemplate({
@@ -70,6 +78,10 @@ function NewQuestionView(quizTitle) {
 		$('#quiz-container').append($setAnswer);
 		$setAnswer.find('.set-correct-answer-button').on('click', function(){
 			var correctAnswer = $setAnswer.find('option:selected').val();
+			if (!correctAnswer) {
+				alert('Please select a correct answer.');
+				return;
+			};
 			Repo.createNewQuestion(quizTitle, question, answers, correctAnswer);
 			$setAnswer.find('.set-correct-answer-button').hide();
 			$setAnswer.find('.new-question-button').show();

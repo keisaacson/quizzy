@@ -64,6 +64,10 @@ function ShowResultView(quizTitle, correctAnswers, totalQuestions, missedQuestio
 	].join(''));
 	$('.save-result-button').on('click', function(){
 		var name = $('input[name="save_result"]').val();
+		if (!name) {
+			alert('Please enter a name.');
+			return;
+		};
 		Repo.saveQuizResult(quizTitle, name, score)
 		$('.save-name').hide();
 		$('.main-view-button').show();

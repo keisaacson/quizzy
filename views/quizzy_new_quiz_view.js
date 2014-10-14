@@ -15,6 +15,10 @@ function NewQuizView() {
 	$view.find('.new-question-button').on('click', function(){
 		var quizzes = Repo.getRepo('quizzes');
 		quizTitle = $('input[name="quiz-title"]').val();
+		if (!quizTitle) {
+			alert('Please enter a quiz name.');
+			return;
+		};
 		if (!quizzes[quizTitle]) {
 			Repo.createNewQuiz(quizTitle);
 			$view.remove();

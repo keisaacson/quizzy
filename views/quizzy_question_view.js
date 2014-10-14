@@ -20,6 +20,10 @@ function QuestionView(questionModel) {
 	$('#quiz-container').append($view);
 	$view.find('.next-question-button').on('click', function(){
 		var selectedChoice = $('input[name=' + questionModel.id + ']:checked').val();
+		if (!selectedChoice) {
+			alert('Please select an answer.');
+			return;
+		};
 		Repo.saveSpiritAnimalResponse(questionModel, selectedChoice);
 		ApplicationController.scoreAnswer(selectedChoice);
 		ApplicationController.nextQuestion();

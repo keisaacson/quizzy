@@ -34,6 +34,10 @@ function ResultView(animal, description, image) {
 	].join(''));
 	$('.save_result').on('click', function() {
 		var name = $('input[name="save_result"]').val();
+		if (!name) {
+			alert('Please enter a name.');
+			return;
+		};
 		Repo.saveSpiritAnimalResult(name, animal);
 		$submit.remove();
 		var secondCompiledHTML = mySecondTemplate({

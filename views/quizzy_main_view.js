@@ -28,7 +28,9 @@ function MainView() {
 	$('#quiz-container').append($view);
 	$view.find('.select-quiz-button').on('click', function(){
 		var quizChoice = $view.find('input:checked').val();
-		if (quizChoice == 'spirit-animal') {
+		if (!quizChoice) {
+			alert('Please select a quiz to play!');
+		} else if (quizChoice == 'spirit-animal') {
 			$view.find('.main-view').remove();
 			ApplicationController.startQuiz();
 		} else {
@@ -38,7 +40,9 @@ function MainView() {
 	});
 	$view.find('.edit-quiz-button').on('click', function(){
 		var quizChoice = $view.find('input:checked').val();
-		if (quizChoice == 'spirit-animal') {
+		if (!quizChoice) {
+			alert('Please select a quiz to edit!');
+		} else if (quizChoice == 'spirit-animal') {
 			alert('This quiz cannot be edited.');
 		} else {
 			$view.find('.main-view').remove();
@@ -47,7 +51,9 @@ function MainView() {
 	});
 	$view.find('.delete-quiz-button').on('click', function(){
 		var quizChoice = $view.find('input:checked').val();
-		if (quizChoice == 'spirit-animal') {
+		if (!quizChoice) {
+			alert('Please select a quiz to delete!');
+		} else if (quizChoice == 'spirit-animal') {
 			alert('This quiz cannot be deleted.');
 		} else if (confirm('Are you sure you want to delete the "' + quizChoice + '" quiz?')) {
 			Repo.deleteQuiz(quizChoice);

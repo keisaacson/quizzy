@@ -16,8 +16,13 @@ function ShowQuestionView(questionModel, quizTitle) {
 	});
 	var $view = $(compiledHTML);
 	$('#quiz-container').append($view);
-	$view.find('.next-question-button').on('click', function(){
+	$view.find('.next-question-button').on('click', function(e){
+		var $me = (e.target);
 		var selectedChoice = $('input[name="' + questionModel.question + '"]:checked').val();
+		if (!selectedChoice) {
+			alert('Please select an answer.');
+			return;
+		};
 		Repo.saveQuizResponse(quizTitle, questionModel, selectedChoice);
 		NewQuizzesController.scoreAnswer(selectedChoice);
 		NewQuizzesController.nextQuestion(quizTitle);
