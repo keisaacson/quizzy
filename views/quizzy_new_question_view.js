@@ -38,8 +38,8 @@ function NewQuestionView(quizTitle) {
 				'</select>',
 				'</br>',
 				'<button class="set-correct-answer-button" type="button">Save Answer</button>',
-				'<button class="new-question-button" type="button" disabled>Add A New Question</button>',
-				'<button class="save-quiz-button" type="button" disabled>Save Completed Quiz</button>',
+				'<button class="new-question-button" type="button" hidden>Add A New Question</button>',
+				'<button class="save-quiz-button" type="button" hidden>Save Completed Quiz</button>',
 			'</div>',
 		'</div>'
 	].join(''));
@@ -71,9 +71,9 @@ function NewQuestionView(quizTitle) {
 		$setAnswer.find('.set-correct-answer-button').on('click', function(){
 			var correctAnswer = $setAnswer.find('option:selected').val();
 			Repo.createNewQuestion(quizTitle, question, answers, correctAnswer);
-			$setAnswer.find('.set-correct-answer-button').attr('disabled', true);
-			$setAnswer.find('.new-question-button').attr('disabled', false);
-			$setAnswer.find('.save-quiz-button').attr('disabled', false);
+			$setAnswer.find('.set-correct-answer-button').hide();
+			$setAnswer.find('.new-question-button').show();
+			$setAnswer.find('.save-quiz-button').show();
 		});
 		$setAnswer.find('.new-question-button').on('click', function(){
 			$setAnswer.find('.set-correct-answer').remove();

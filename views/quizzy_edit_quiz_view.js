@@ -30,9 +30,11 @@ function editQuizView(quizTitle) {
 	});
 	var $view = $(compiledHTML);
 	$('#quiz-container').append($view);
-	$view.find('.delete-question-button').on('click', function(){
+	$view.find('.delete-question-button').on('click', function(e){
 		if (confirm('Are you sure you want to delete this question? All saved statistics for this question will also be deleted.')) {
-			var questionIndex = $view.find('.delete-question-button').val();
+			var $me = $(e.target);
+			var questionIndex = $me.val();
+			console.log(questionIndex);
 			var question = Repo.getQuestion(quizTitle, questionIndex);
 			Repo.deleteQuestion(quizTitle, questionIndex, question);
 			$view.find('.edit-quiz').remove();

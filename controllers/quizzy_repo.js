@@ -4,9 +4,9 @@ var Repo = {
 		localStorage.setItem(repoName, JSON.stringify(newRepo));
 	},
 	createNewQuiz: function(quizTitle) {
-		var quizzes = this.getRepo(quizzes);
-		var quizresponses = this.getRepo(quizresponses);
-		var quizresults = this.getRepo(quizresults);
+		var quizzes = this.getRepo('quizzes');
+		var quizresponses = this.getRepo('quizresponses');
+		var quizresults = this.getRepo('quizresults');
 		quizzes[quizTitle] = {};
 		quizresponses[quizTitle] = {};
 		quizresults[quizTitle] = {};
