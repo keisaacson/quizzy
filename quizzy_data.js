@@ -68,70 +68,70 @@ var quizData = {
 			animal: 'tiny turtle',
 			description: 'cute and youthful',
 			points_range: [10, 16],
-			image: 'https://1.bp.blogspot.com/-hjU7YDIMP_c/TWBhNqusYuI/AAAAAAAADS0/wS_hlGVTi2w/s1600/turtle+%2528by+stoop%2529+001.jpg'
+			image: '//1.bp.blogspot.com/-hjU7YDIMP_c/TWBhNqusYuI/AAAAAAAADS0/wS_hlGVTi2w/s1600/turtle+%2528by+stoop%2529+001.jpg'
 		},
 		{
 			id: 1,
 			animal: 'teacup pig',
 			description: 'welcoming and cuddly',
 			points_range: [17, 22],
-			image: 'https://static.tumblr.com/5d57d5e2c4815897359c56bd4546b985/n9jaxcm/G17mrconq/tumblr_static_pigletcute.jpg'
+			image: '//static.tumblr.com/5d57d5e2c4815897359c56bd4546b985/n9jaxcm/G17mrconq/tumblr_static_pigletcute.jpg'
 		},
 		{
 			id: 2,
 			animal: 'graceful swan',
 			description: 'peaceful and independent',
 			points_range: [23, 25],
-			image: 'https://cache.desktopnexus.com/thumbnails/1150144-bigthumbnail.jpg'
+			image: '//cache.desktopnexus.com/thumbnails/1150144-bigthumbnail.jpg'
 		},
 		{
 			id: 3,
 			animal: 'playful otter',
 			description: 'friendly and talkative',
 			points_range: [26, 29],
-			image: 'https://raredelights.com/wp-content/uploads/2013/10/Sea-Otter.jpg'
+			image: '//raredelights.com/wp-content/uploads/2013/10/Sea-Otter.jpg'
 		},
 		{
 			id: 4,
 			animal: 'goat',
 			description: 'stubborn and adventurous',
 			points_range: [30, 30], 
-			image: 'https://3.bp.blogspot.com/-DOt_rRESOrU/TjoRdAn7IfI/AAAAAAAACxM/BCJO6oYfads/s1600/cs_goat.jpg'
+			image: '//3.bp.blogspot.com/-DOt_rRESOrU/TjoRdAn7IfI/AAAAAAAACxM/BCJO6oYfads/s1600/cs_goat.jpg'
 		},
 		{
 			id: 5,
 			animal: 'wise owl',
 			description: 'observant and analytical',
 			points_range: [31, 31],
-			image: 'https://upload.wikimedia.org/wikipedia/commons/3/39/Athene_noctua_(cropped).jpg'
+			image: '//upload.wikimedia.org/wikipedia/commons/3/39/Athene_noctua_(cropped).jpg'
 		},
 		{
 			id: 6,
 			animal: 'bat',
 			description: 'fearless and insightful',
 			points_range: [32, 32],
-			image: 'https://images.nationalgeographic.com/wpf/media-live/photos/000/005/cache/common-vampire-bat_505_600x450.jpg'
+			image: '//images.nationalgeographic.com/wpf/media-live/photos/000/005/cache/common-vampire-bat_505_600x450.jpg'
 		},
 		{
 			id: 7,
 			animal: 'slithering snake',
 			description: 'sneaky and cunning',
 			points_range: [33, 37],
-			image: 'https://doowansnewsandevents.files.wordpress.com/2013/10/snake-medicine.jpg'
+			image: '//doowansnewsandevents.files.wordpress.com/2013/10/snake-medicine.jpg'
 		},
 		{
 			id: 8,
 			animal: 'powerful bear',
 			description: 'authoritative and mighty',
 			points_range: [38, 43],
-			image: 'https://i4.mirror.co.uk/incoming/article801276.ece/alternates/s615b/Brown%20bear%20(female)%20and%20its%20children%20play%20with%20a%20ball%20in%20Kamchatka%20Peninsula,%20Russia'
+			image: '//i4.mirror.co.uk/incoming/article801276.ece/alternates/s615b/Brown%20bear%20(female)%20and%20its%20children%20play%20with%20a%20ball%20in%20Kamchatka%20Peninsula,%20Russia'
 		},
 		{
 			id: 9,
 			animal: 'shrewd wolf',
 			description: 'agressive and keen',
 			points_range: [44, 50],
-			image: 'https://upload.wikimedia.org/wikipedia/commons/f/f5/Howlsnow.jpg'
+			image: '//upload.wikimedia.org/wikipedia/commons/f/f5/Howlsnow.jpg'
 		},
 	]
 };
