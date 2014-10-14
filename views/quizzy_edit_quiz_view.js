@@ -31,6 +31,20 @@ function editQuizView(quizTitle) {
 	var $view = $(compiledHTML);
 	$('#quiz-container').append($view);
 	$view.find('.delete-question-button').on('click', function(e){
+		var non_null_vals = 0;
+		for (var i = 0; i < quizQuestions.length; i++) {
+			if (quizQuestions[i] !== null) {
+				non_null_vals++;
+			};
+		};
+		if (non_null_vals === 1) {
+			if (confirm('Deleting the last question will also delete the entire quiz. Do you want to procede?')) {
+				Repo.deleteQuiz(quizTitle);
+				$view.remove();
+				NewQuizzesController.viewQuizzes();
+			};
+			return;
+		};
 		if (confirm('Are you sure you want to delete this question? All saved statistics for this question will also be deleted.')) {
 			var $me = $(e.target);
 			var questionIndex = $me.val();
